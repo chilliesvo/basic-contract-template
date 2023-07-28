@@ -1,0 +1,28 @@
+{
+  "grammarly.files.include": ["**/README.md", "**/readme.md", "**/*.txt"],
+  "runOnSave.statusMessageTimeout": 3000,
+  "runOnSave.commands": [
+    // {
+    //   "match": ".*\\.sol$",
+    //   "command": "hh check",
+    //   "runIn": "terminal"
+    // },
+    // {
+    //   "match": ".*\\.sol$",
+    //   "command": "hh size-contracts",
+    //   "runIn": "terminal"
+    // },
+    {
+      "match": ".*\\.sol$",
+      "command": "hh compile",
+      "runIn": "terminal"
+    },
+    {
+      "match": "scripts/deploy.js",
+      "command": "hh run scripts/deploy.js",
+      "runIn": "terminal"
+    },
+  ],
+  "git.ignoreLimitWarning": true,
+  "solidity.defaultCompiler": "localNodeModule"
+}
