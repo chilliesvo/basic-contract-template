@@ -4,19 +4,7 @@ const contracts = require("../contracts.json");
 async function main() {
     const jobs = [
         run("verify:verify", {
-            address: contracts.monkey721Library,
-        }),
-        run("verify:verify", {
-            address: contracts.monkey1155Library,
-        }),
-        run("verify:verify", {
-            address: contracts.nftFactoryVerify,
-        }),
-        run("verify:verify", {
-            address: contracts.monkey721PublicMintVerify,
-        }),
-        run("verify:verify", {
-            address: contracts.monkey1155PublicMintVerify,
+            // address: 
         }),
     ];
 
