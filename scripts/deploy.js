@@ -3,7 +3,7 @@ const {
     deployProxyAndLogger,
     contractFactoriesLoader,
 } = require("../utils/deploy.utils");
-const { blockTimestamp } = require("../test/utils");
+const { blockTimestamp } = require("../utils/utils");
 require("dotenv").config();
 const env = process.env;
 const fs = require("fs");
