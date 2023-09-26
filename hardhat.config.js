@@ -41,41 +41,32 @@ const config = {
             allowUnlimitedContractSize: false,
             blockGasLimit: 500e9,
         },
-        // Mainnet chains
-        ethereum: {
-            url: process.env.ETHEREUM_RPC,
-            accounts: [process.env.SYSTEM_PRIVATE_KEY],
-        },
-        binance: {
-            url: process.env.BINANCE_RPC,
-            accounts: [process.env.SYSTEM_PRIVATE_KEY],
-        },
-        polygon: {
-            url: process.env.POLYGON_RPC,
-            accounts: [process.env.SYSTEM_PRIVATE_KEY],
-        },
         // Testnet chains
         goerli: {
             url: process.env.GOERLI_RPC,
-            accounts: [process.env.SYSTEM_TEST_PRIVATE_KEY],
+            accounts: [process.env.SYSTEM_PRIVATE_KEY],
         },
         binance_testnet: {
             url: process.env.BINANCE_TESTNET_RPC,
-            accounts: [process.env.SYSTEM_TEST_PRIVATE_KEY],
+            accounts: [process.env.SYSTEM_PRIVATE_KEY],
         },
         mumbai: {
             url: process.env.MUMBAI_RPC,
-            accounts: [process.env.SYSTEM_TEST_PRIVATE_KEY],
+            accounts: [process.env.SYSTEM_PRIVATE_KEY],
         },
+        frame: {
+            url: 'http://127.0.0.1:1248', // To run inside WSL2, see IP in file /etc/resolv.conf
+            timeout: 4000000
+        }
     },
     etherscan: {
         apiKey: {
             mainnet: process.env.ETHER_API_KEY,
             bsc: process.env.BINANCE_API_KEY,
             polygon: process.env.POLYGON_API_KEY,
-            goerli: process.env.STAGING_ETHER_API_KEY,
-            bscTestnet: process.env.STAGING_BINANCE_API_KEY,
-            polygonMumbai: process.env.STAGING_POLYGON_API_KEY,
+            goerli: process.env.ETHER_API_KEY,
+            bscTestnet: process.env.BINANCE_API_KEY,
+            polygonMumbai: process.env.POLYGON_API_KEY,
         },
     },
     solidity: {
@@ -102,7 +93,7 @@ const config = {
     contractSizer: {
         alphaSort: true,
         disambiguatePaths: false,
-        runOnCompile: false,
+        runOnCompile: (process.env.REPORT_SIZE === "true") ? true : false,
         strict: true,
     },
     mocha: {
@@ -114,10 +105,12 @@ const config = {
         },
     },
     gasReporter: {
-        enabled: true,
+        enabled: (process.env.REPORT_GAS === "true") ? true : false,
         currency: "USD",
-        token: "BNB",
-        gasPrice: 30,
+        token: "ETH",
+        noColors: true, //optional
+        gasPrice: 10, //gwei
+        outputFile: (process.env.EXPORT_REPORT_GAS === "true") ? "gas-report.txt" : "stdout", //optional
         coinmarketcap: process.env.COIN_MARKET_API,
     },
     exposed: { prefix: "$" },
