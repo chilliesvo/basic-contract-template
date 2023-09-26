@@ -110,7 +110,7 @@ const config = {
         token: "ETH",
         noColors: true, //optional
         gasPrice: 10, //gwei
-        outputFile: (process.env.EXPORT_REPORT_GAS === "true") ? "gas-report.txt" : "stdout", //optional
+        outputFile: (process.env.EXPORT_REPORT_GAS === "true") ? "gas-report.txt" : "", //optional
         coinmarketcap: process.env.COIN_MARKET_API,
     },
     exposed: {
