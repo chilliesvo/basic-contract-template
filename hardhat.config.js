@@ -113,7 +113,10 @@ const config = {
         outputFile: (process.env.EXPORT_REPORT_GAS === "true") ? "gas-report.txt" : "stdout", //optional
         coinmarketcap: process.env.COIN_MARKET_API,
     },
-    exposed: { prefix: "$" },
+    exposed: {
+        prefix: "$",
+        outDir: (process.env.EXPOSED_ON === "true") ? "contracts-exposed" : "",
+    },
 };
 
 module.exports = config;
